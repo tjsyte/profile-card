@@ -1,0 +1,454 @@
+/* Base styles */
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #2F5D62;
+    color: #DFEEEA;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.background-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-animation .confetti {
+    width: 10px;
+    height: 10px;
+    background-color: #A7C4BC;
+    position: absolute;
+    animation: confetti-fall 4s infinite;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.background-animation .confetti {
+    animation: confetti-fall 5s linear infinite;
+}
+
+.card-container {
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+    width: 90%;
+    max-width: 500px;
+    height: 250px;
+    margin: 20px auto;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.52, -0.09, 0.43, 1.31);
+    position: relative;
+    border-radius: 10px;
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card .side {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card .back {
+    transform: rotateY(180deg);
+}
+
+.front-side,
+.back-side {
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(18, 37, 41, 0.8);
+    box-shadow: 0 6px 12px 0 rgba(64, 64, 64);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.popup-content {
+    background-color: rgba(18, 37, 41, 0.8);
+    color: #DFEEEA;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+@keyframes popup-animation {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-content {
+    animation: popup-animation 0.5s forwards;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #DFEEEA;
+    transition: transform 0.2s ease, color 0.2s ease, background-color 0.3s ease;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    color: #f44336; 
+    transform: scale(1.2);
+}
+
+.close-btn:active {
+    transform: scale(0.9);
+}
+
+.skills-bar {
+    width: 100%;
+}
+
+.skill {
+    margin: 15px 0;
+}
+
+.skill-name {
+    margin-bottom: 5px;
+}
+
+.skill-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 15px;
+    line-height: 15px;
+    color: #fff;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.5s ease;
+}
+
+.skill-progress:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.skill-progress.html {
+    width: 0;
+    background: linear-gradient(to right, #e34c26, #f06529, #d9534f); 
+    animation: fill-html 2s forwards;
+}
+
+.skill-progress.css {
+    width: 0;
+    background: linear-gradient(to right, #2965f1, #264de4, #1e3a8a); 
+    animation: fill-css 2s forwards;
+}
+
+.skill-progress.js {
+    width: 0;
+    background: linear-gradient(to right, #f7df1e, #f0db4f, #e3c43f); 
+    animation: fill-js 2s forwards;
+}
+
+.skill-progress.php {
+    width: 0;
+    background: linear-gradient(to right, #777bb4, #6f42c1, #5a2d81); 
+    animation: fill-php 2s forwards;
+}
+
+.skill-progress.py {
+    width: 0;
+    background: linear-gradient(to right, #3776ab, #306998, #5a8f8f); 
+    animation: fill-py 2s forwards;
+}
+
+.skill-progress.java {
+    width: 0;
+    background: linear-gradient(to right, #d32f2f, #f44336, #e57373);
+    animation: fill-java 2s forwards;
+}
+
+@keyframes fill-html {
+    to {
+        width: 90%;
+    }
+}
+
+@keyframes fill-css {
+    to {
+        width: 80%;
+    }
+}
+
+@keyframes fill-js {
+    to {
+        width: 75%;
+    }
+}
+
+@keyframes fill-php {
+    to {
+        width: 70%;
+    }
+}
+
+@keyframes fill-py {
+    to {
+        width: 60%;
+    }
+}
+
+@keyframes fill-java {
+    to {
+        width: 60%;
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: #DFEEEA;
+    font-size: 14px;
+    z-index: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.blue {
+    color: #ADD8E6;
+}
+
+.gray {
+    color: #808080;
+}
+
+.green {
+    color: #90EE90;
+}
+
+.purple {
+    color: #BA55D3;
+}
+
+.cyan {
+    color: #00FFFF;
+}
+
+.red {
+    color: #DC143C;
+}
+
+.introduction {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    color: #DFEEEA;
+    font-weight: bold;
+    overflow: hidden;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.introduction p {
+    margin: 0;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.offline {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.offline-content {
+    background-color: #F0F8F4;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #2F5D62;
+}
+
+.offline-content h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.offline-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.offline-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #2F5D62;
+    color: #F0F8F4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.offline-content button:hover {
+    background-color: #5E8B7E;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .card-container {
+        height: 200px;
+    }
+
+    .front-side,
+    .back-side {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .popup-content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .skills-bar .skill {
+        margin: 10px 0;
+    }
+
+    .introduction {
+        font-size: 24px;
+        bottom: 80px;
+    }
+
+    .introduction p {
+        font-size: 20px;
+    }
+
+    .background-animation .confetti {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        height: 150px;
+    }
+
+    .front-side,
+    .back-side {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .popup-content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .skills-bar .skill {
+        margin: 8px 0;
+    }
+
+    .introduction {
+        font-size: 20px;
+        bottom: 60px;
+    }
+
+    .introduction p {
+        font-size: 18px;
+    }
+
+    .background-animation .confetti {
+        width: 6px;
+        height: 6px;
+    }
+}
